@@ -1,0 +1,26 @@
+<div class="container">
+  <h1><a href='/'>Phlickr</a></h1>
+  <% if session[:username] %>
+    Welcome! <b><%= session[:username].capitalize %></b>
+    <p><a href='/logout'>Logout</a></p>
+    <p><a href='/upload'>Upload</a></p>
+    <%else%>
+  <p><a href='/login'>Login/Sign up</a></p>
+  <%end%>
+</div>
+
+<div class='photo'>
+  <p><b><%= @albums.first.user.username.capitalize %>'s</b> album </p>
+<% @albums.each do |a| %>
+  <a href='/album/<%=a.id%>'><%= a.name %></a><br>
+  <div id='carousel'>
+    <figure id='spinner'>
+      <% a.photos.limit(8).each do |p|%>
+      <img id='size_photo' src ='<%=p.imagefile%>' alt="">
+      <%end%><br><br>
+    </figure>
+  </div>
+<span style=float:left class=ss-icon onclick="galleryspin('-')">&lt;</span>
+<span style=float:right class=ss-icon onclick="galleryspin('')">&gt;</span>
+<%end%>
+</div>

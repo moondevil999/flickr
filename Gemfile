@@ -21,3 +21,7 @@ group :test do
   gem 'faker'
   gem 'rspec'
 end
+
+gem "mini_magick"
+
+gem 'carrierwave'

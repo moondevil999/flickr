@@ -1,0 +1,16 @@
+<p>Create Album</p>
+<form action='/create/album' method='post'>
+  <input type='text' name='album_name'>
+  <input type='submit' value='Create'>
+</form><br>
+
+<p>Upload Photo</p>
+<form action="/upload/photo" enctype="multipart/form-data" method='post'>
+  <select name='album'>
+    <%@album.each do |a|%>
+    <option value="<%= a.name%>"><%=a.name%></option>
+    <%end%>
+  </select>
+  <input type="file" name="filename">
+  <input type='submit' value='upload'>
+</form>

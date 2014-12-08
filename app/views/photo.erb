@@ -7,14 +7,11 @@
     <%else%>
   <p><a href='/login'>Login/Sign up</a></p>
   <%end%>
-
-
-
 </div>
 
 <div class='photo'>
-  <p> home </p>
-    <%@photo.each do |p|%>
+  <p> photos from <b><%= @photos.first.album.name %></b></p>
+    <%@photos.each do |p|%>
       <p><img id='size_photo' src = <%= p.imagefile%>></p>
       <a href='/album/<%= p.album.id %>'><%= p.album.name %></a> |
       <a href='/users/<%= p.album.user.id%>/albums'><%= p.album.user.username %></a>
